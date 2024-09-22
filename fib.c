@@ -11,24 +11,26 @@
     unsigned long long int second_num = 1;
     unsigned long long int sum_of_num = 0;
 
+   if(nth_term == 1)
+      return 0;
 
-   if (nth_term == 2)
-      return 1;
-
-   for (int ix = 0; ix < nth_term-2; ++ix){
+   for (int ix = 2; ix < nth_term; ++ix) {
       
       sum_of_num = first_num + second_num   ;
       first_num = second_num ;
       second_num = sum_of_num ;
    }
-   return sum_of_num;
+   return second_num;
 }
 
 unsigned long long int fib_recursive(int nth_term)
 {
 
-   if (nth_term <= 1)
-      return nth_term;
+   if (nth_term <= 0)
+      return 0;
+   if (nth_term == 1)
+      return 1;
+      
    return fib_recursive(nth_term - 1) + fib_recursive(nth_term - 2);
 }
 
@@ -37,11 +39,10 @@ unsigned long long int fib_recursive(int nth_term)
 int main(int argc, char *argv[]) 
 {
 
-    char letter;
+   
     unsigned long long int fibo_sum;
-    unsigned long long int txt_file_num;
     unsigned long long int given_num = atoi(argv[1]);
-    letter = argv[2][0];
+    char letter = argv[2][0];
 
    if (argc != 3) {
       printf("File: %s <int> <r|i> \n", argv[0]);
